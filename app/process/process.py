@@ -3,8 +3,8 @@ import threading
 import sys
 
 # Endereço do Sequenciador:
-HOST = '127.0.0.1'
-PORT = 9000
+SEQUENCER_HOST = '127.0.0.1'
+SEQUENCER_PORT = 9000
 
 class ProcessoChat:
     def __init__(self, id_processo):
@@ -15,7 +15,7 @@ class ProcessoChat:
 
     def iniciar(self):
         try:
-            self.sock.connect((HOST, PORT))
+            self.sock.connect((SEQUENCER_HOST, SEQUENCER_PORT))
         except Exception as e:
             print(f"Erro ao conectar ao Sequenciador: {e}")
             return
