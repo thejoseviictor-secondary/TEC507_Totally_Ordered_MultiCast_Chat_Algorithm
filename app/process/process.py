@@ -30,8 +30,6 @@ class ProcessoChat:
         try:
             while True:
                 texto = input()
-                if texto.strip().lower() == 'sair':
-                    break
                 if texto.strip():
                     msg_envio = f"{self.id_processo}:{texto}"
                     self.sock.sendall(msg_envio.encode('utf-8'))
