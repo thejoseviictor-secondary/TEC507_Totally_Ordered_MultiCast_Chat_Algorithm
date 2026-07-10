@@ -3,7 +3,7 @@ import threading
 import sys
 
 # Endereço do Sequenciador:
-SEQUENCER_HOST = '127.0.0.1'
+SEQUENCER_HOST = '192.168.0.1'
 SEQUENCER_PORT = 9000
 
 class ProcessoChat:
@@ -57,6 +57,12 @@ class ProcessoChat:
                 break
 
     def processar_mensagem_recebida(self, pacote):
+        if pacote.startswith("SYNC|"):
+            ultima = int(pacote.split("|")[1])
+            self.proxima_sequencia_esperada = ultima + 1
+            print(f"[SINCRONIZAÇÃO] Próxima sequência esperada: {self.proxima_sequencia_esperada}")
+            return
+
         # Pacote no formato: "NUMERO_SEQUENCIA|REMETENTE:TEXTO"
         partes = pacote.split("|", 1)
         if len(partes) < 2:
