@@ -4,4 +4,5 @@
 1. Acessar "app/sequencer";
 2. Rodar "python sequencer.py";
 3. Acessar "app/process/";
-4. Rodar "python process.py [Nome do Processo]" para cada processo desejado, em terminais separados.
+4. Alterar o endereço do "Sequenciador" no arquivo "process.py";
+5. Rodar "python process.py [Nome do Processo]" para cada processo desejado, em terminais separados.
