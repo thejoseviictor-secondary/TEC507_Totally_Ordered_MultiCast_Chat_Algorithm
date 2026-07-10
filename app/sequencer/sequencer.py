@@ -25,11 +25,10 @@ class Sequenciador:
                 conn, addr = server_socket.accept()
                 with self.lock:
                     self.clientes.append(conn)
+                    conn.sendall(f"SYNC|{self.sequencia_atual}\n".encode("utf-8"))
                 threading.Thread(target=self.tratar_cliente, args=(conn,), daemon=True).start()
             except socket.timeout:
                 pass
-
-
 
     def tratar_cliente(self, conn):
         while True:
